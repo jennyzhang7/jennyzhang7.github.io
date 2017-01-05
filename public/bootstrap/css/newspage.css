@@ -1,0 +1,18 @@
+.blog_content {
+	margin-top: 60px;
+	margin-left: 60px;
+	margin-right: 30px;
+	margin-bottom: 30px;
+}
+
+#text {
+	font-weight: 400;
+	font-size: 16px;
+}
+
+@media(max-width:500px) {
+	
+	.blog_content {
+		margin-left: 30px;
+	}
+}	

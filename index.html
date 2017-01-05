@@ -1,0 +1,334 @@
+<html>
+<head>
+<title></title>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script> 
+$(function(){
+  $("#header").load("header.html"); 
+  $("#footer").load("footer.html"); 
+});
+</script> 
+</head>
+<body>
+<div id="header"></div>
+
+    
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Hi there! My name is Jenny</h1>
+                        <h4>. . . and I am an enthusiastic traveller and techie! On this site you'll find stories about my adventurous solo-backpacking trip on the other side of the world, as well as my repertoire of skills!</h4>
+                        <hr class="intro-divider">
+                    </div>
+            
+                    <div class="worldmap">
+                    	<!-- Styles -->
+						<style>
+						#chartdiv {
+						  width: 100%;
+						  height: 500px;
+						}     
+						</style>
+
+						<!-- Resources -->
+						<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+						<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+						<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+						<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+						<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+						<!-- Chart code -->
+						<script>
+						/**
+						 * SVG path for target icon
+						 */
+						var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+						/**
+						 * SVG path for target icon
+						 */
+						var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+						/**
+						 * SVG path for plane icon
+						 */
+						var planeSVG = "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47";
+
+						/**
+						 * Create the map
+						 */
+						var map = AmCharts.makeChart( "chartdiv", {
+						  "type": "map",
+						  "theme": "light",
+
+
+						  "dataProvider": {
+						    "map": "worldLow",
+						    "zoomLevel": 1,
+						    "zoomLongitude": 0,
+						    "zoomLatitude": 42,
+
+						    "lines": [ {
+						      "id": "line1",
+						      "arc": -0.85,
+						      "alpha": 0.3,
+						      "latitudes": [ 39.9042, 43.8163, -8.3405, -9.1900 ],
+						      "longitudes": [ 116.4074, -79.4287, 115.0920, -75.0152 ]
+						    }, {
+						      "id": "line2",
+						      "alpha": 0,
+						      "color": "#000000",
+						      "latitudes": [ 39.9042, 43.8163, -8.3405, -9.1900 ],
+						      "longitudes": [ 116.4074, -79.4287, 115.0920, -75.0152 ]
+						    } ],
+						    "images": [ {
+						      "svgPath": targetSVG,
+						      "title": "Beijing",
+						      "latitude": 39.9042,
+						      "longitude": 116.4074
+						    }, {
+						      "svgPath": targetSVG,
+						      "title": "Toronto",
+						      "latitude": 43.8163,
+						      "longitude": -79.4287
+						    }, {
+						      "svgPath": targetSVG,
+						      "title": "Bali",
+						      "latitude": -8.3405,
+						      "longitude": 115.0920
+						    }, {
+						      "svgPath": targetSVG,
+						      "title": "Peru",
+						      "latitude": -9.1900,
+						      "longitude": -75.0152
+						    }, {
+						      "svgPath": planeSVG,
+						      "positionOnLine": 0,
+						      "color": "#000000",
+						      "alpha": 0.1,
+						      "animateAlongLine": true,
+						      "lineId": "line2",
+						      "flipDirection": true,
+						      "loop": true,
+						      "scale": 0.03,
+						      "positionScale": 1.3
+						    }, {
+						      "svgPath": planeSVG,
+						      "positionOnLine": 0,
+						      "color": "#585869",
+						      "animateAlongLine": true,
+						      "lineId": "line1",
+						      "flipDirection": true,
+						      "loop": true,
+						      "scale": 0.03,
+						      "positionScale": 1.8
+						    } ]
+						  },
+
+						  "areasSettings": {
+						    "unlistedAreasColor": "#8dd9ef"
+						  },
+
+						  "imagesSettings": {
+						    "color": "#585869",
+						    "rollOverColor": "#585869",
+						    "selectedColor": "#585869",
+						    "pauseDuration": 0.2,
+						    "animationDuration": 3.5,
+						    "adjustAnimationSpeed": true
+						  },
+
+						  "linesSettings": {
+						    "color": "#585869",
+						    "alpha": 0.4
+						  },
+
+
+						} );
+						</script>
+
+						<!-- HTML -->
+						<div id="chartdiv"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">A little about me</h2>
+                    <p class="lead">I was born in Beijing, China, but immigrated to Canada at a young age of 3 with my parents. It was definitely not easy for my parents to start their lives over as new immigrants in a Western country, but I am so incredibly thankful to them and to have been blessed with the opportunities given to me. <br><br> I have lived my entire life in Toronto, AKA the 6ix, and am still a student at the University of Toronto. My entire life has been a learning curve, and I am continually amazed at how much I have been learning daily about this large and mysterious world. </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="public/dist/img/introphoto.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Education</h2>
+                    <p class="lead">University of Toronto - St.George campus <br>Honours Bachelor of Science<br>Specialist in Computer Science (2014 – present)<br>Minor in Mathematics</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="public/dist/img/UniversityOfToronto.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Hobbies & Interests</h2>
+                    <p class="lead">When I'm not studying/coding, I enjoy playing the piano and painting. However, this past year I was obsessed with the idea of backpacking to experience different parts of the world. During long hours of studying, I frequently caught myself sneaking peaks at plane tickets and dreaming of spontaneously buying one. I'm a big believer of going for your dreams, so... I did it! I gathered up my courage and I went to Asia alone! I will be continually updating my blog posts about my adventures overseas, so check back often! Or, if you don't want to read my rambling, follow me on <a href="https://www.instagram.com/zyjenny31/">Instagram</a>! </p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="public/dist/img/mtijen.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+    
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Skills</h2>
+                    <p class="lead">
+                        <b>Languages (in order of decreasing proficiency): </b>
+                            <br>Python, C, Java, PHP
+                        
+                        <br><br><b>Other:</b>
+                            <br>Website development with PHP framework
+                            <br>HTML/CSS, Javascript
+                            <br>Linux shell
+                            <br>Knowledge of operating systems
+                            <br>Relational databases (SQL)
+                            <br>Data Structures
+                            <br>Hackathon planning 
+                            
+                    </p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="public/dist/img/coding.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+    
+    
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Contact Info</h2>
+                    <p class="lead">
+                        <b>Emails:</b> 
+                        <br>jennyy.zhang@mail.utoronto.ca
+                        <br>zyjenny31@gmail.com
+                        <br><br><b>Phone number:</b>
+                        <br>(647) 274-2573
+                    </p>
+                    
+                    <br><br><p>FEEL FREE TO CONTACT ME! (I'm friendly, I promise)</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="public/dist/img/contactme.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+            
+                <div class="intro-message">
+                    <h1>Other links:</h1>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                    	<li>
+                            <a href="https://www.instagram.com/zyjenny31/" class="btn btn-default btn-lg"><i class="fa fa-instagram fa-fw"></i> <span class="network-name">Instagram</span></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/jennyzhang7" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        </li>
+                        <li>
+                            <a href="https://ca.linkedin.com/in/jenny-zhang-39bb45b3" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+<div id="footer"></div>
+</body>
+</html>
+
+
